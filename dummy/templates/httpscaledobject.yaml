@@ -1,0 +1,14 @@
+kind: HTTPScaledObject
+apiVersion: http.keda.sh/v1alpha1
+metadata:
+    name: {{ .Chart.Name }}-{{ .Values.deploymentNumber }}
+spec:
+    host: {{ .Chart.Name }}-{{ .Values.deploymentNumber }}
+    targetPendingRequests: {{ .Values.keda.http.targetPendingRequests }}
+    scaleTargetRef:
+        deployment: {{ .Chart.Name }}-{{ .Values.deploymentNumber }}
+        service: managed-{{ .Chart.Name }}-{{ .Values.deploymentNumber }}
+        port: 80
+    replicas:
+        min: {{ .Values.scaling.minReplicas | default "0" }}
+        max: {{ .Values.scaling.maxReplicas | default "10" }}

@@ -1,0 +1,17 @@
+images:
+  # use images built as part of Readme.md
+  tag: 0.3.1
+  operator: http-add-on-operator
+  interceptor: http-add-on-interceptor
+  scaler: http-add-on-scaler
+
+operator:
+  pullPolicy: Never
+
+scaler:
+  pullPolicy: Never
+
+interceptor:
+  pullPolicy: Never
+  responseHeaderTimeout: 5000ms
+  maxIdleConns: 0  # unlimited

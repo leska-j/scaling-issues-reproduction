@@ -1,0 +1,12 @@
+deploymentNumber: 
+serviceImage: nginxdemos/hello
+
+scaling:
+  minReplicas: 0
+  maxReplicas: 10
+
+keda:
+  namespace: keda
+  interceptorPort: 8080
+  http:
+    targetPendingRequests: 20

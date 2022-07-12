@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-{{ .Values.deploymentNumber }}
+  namespace: {{ .Release.Namespace }}
+  labels: &labels
+    app: {{ .Chart.Name }}-{{ .Values.deploymentNumber }}
+spec:
+  replicas: 0  # http-add-on should autoscale up, this prevents initial pod creation specialy when http-add-on scaler is loaded
+  selector:
+    matchLabels: 
+      <<: *labels
+  template:
+    metadata:
+      labels: 
+        <<: *labels
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.serviceImage }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
