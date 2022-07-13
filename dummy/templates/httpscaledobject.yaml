@@ -7,7 +7,7 @@ spec:
     targetPendingRequests: {{ .Values.keda.http.targetPendingRequests }}
     scaleTargetRef:
         deployment: {{ .Chart.Name }}-{{ .Values.deploymentNumber }}
-        service: managed-{{ .Chart.Name }}-{{ .Values.deploymentNumber }}
+        service: {{ .Chart.Name }}-{{ .Values.deploymentNumber }}
         port: 80
     replicas:
         min: {{ .Values.scaling.minReplicas | default "0" }}

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: managed-{{ .Chart.Name }}-{{ .Values.deploymentNumber }}
+  name: {{ .Chart.Name }}-{{ .Values.deploymentNumber }}
 spec:
   type: ClusterIP
   selector:

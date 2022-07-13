@@ -23,4 +23,8 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+          readinessProbe:
+            tcpSocket:
+              port: 80
+            periodSeconds: 1
       restartPolicy: Always
