@@ -2,7 +2,7 @@
 
 ## Observed issues with `keda & http-add-on` scaling
 
-inst- big delay between the time when service is scaled from 0 and time when request is received by service
+- big delay between the time when service is scaled from 0 and time when request is received by service
   - after service is scaled and running, http-add-on passes trough the request to the service
   - based on service logs it takes several seconds until service receives http request
 - when multiple services are scaled from zero in quick succession they are not scaled back to 0 after given time even though there are not new requests
