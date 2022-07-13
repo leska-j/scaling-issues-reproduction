@@ -71,13 +71,6 @@ into local `kind` cluster.
            --image=alpine/curl --restart=Never -- sh -c "sleep infinity"
    ```
 
-## Cleanup
-1) destroy kind cluster
-
-   ```bash
-   kind delete cluster --name ${CL_NAME}
-   ```
-
 ## Test
 these steps are intended to be runned between deployment and cleanup (kind cluster is persistent so deployment should be needed only once)
 
@@ -122,3 +115,10 @@ these steps are intended to be runned between deployment and cleanup (kind clust
 2) expected results:
     - real time should be close to sanity check values [failing]
     - scale down time should be close to sanity check values [failing]
+
+## Cleanup
+1) destroy kind cluster
+
+   ```bash
+   kind delete cluster --name ${CL_NAME}
+   ```
