@@ -5,6 +5,13 @@
 - big delay between the time when service is scaled from 0 and time when request is received by service
   - after service is scaled and running, http-add-on passes trough the request to the service
   - based on service logs it takes several seconds until service receives http request
+  - delay look to be dependent on number of scaled services 
+    ```
+    1 => 4-6s
+    2 => 6-10s
+    3 => 19-20s
+    4-10 => 20-25s(exceptionaly even over 30s)
+    ```
 - when multiple services are scaled from zero in quick succession they are not scaled back to 0 after given time even though there are not new requests
 
 We observed these issues in eks cluster in aws and we were able to reproduce it locally running cluster.
